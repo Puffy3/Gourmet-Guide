@@ -1,10 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { useCookies } from 'react-cookie'
+import { useNavigate } from 'react-router-dom'
 function Navbar() {
+  const navigate=useNavigate()
+  const [cookies, setCookie] = useCookies(['access_token'])
+  const logout= ()=>{
+    setCookie("access_token","")
+  window.localStorage.removeItem("userID");
+    navigate("/auth/login")
+  }
   return (
     <>
-    <div className='flex gap-60 px-4 text-orange-500 bg-black py-2 items-center rounded-md'>
+    <div className='flex justify-between px-4 text-orange-500 bg-black py-2 items-center rounded-md'>
         <div className='text-3xl font-extrabold animate-bounce'>
             Gourmet-Guide
         </div>
@@ -18,9 +26,16 @@ function Navbar() {
             
             </ul>
         </div>
-        <div className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg'>
-           <Link to='auth'> Login/Register </Link>
-        </div>
+        <div className='w-52'><div >
+          {!cookies.access_token ?( <ul className='flex gap-5 items-center'>
+          <li className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg'> <Link to='auth/login'> Login </Link></li>
+          <li> |</li>
+          <li className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg'> <Link to='auth/register'> Register </Link></li>
+          </ul>):<button className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg' onClick={logout}>Logout</button>}
+         
+          
+        </div></div>
+        
     </div>
     
     
