@@ -8,6 +8,7 @@ import CreateRec from "./Pages/CreateRec.jsx"
 import Navbar from "./Components/Navbar.jsx"
 import Login from "./Components/Login.jsx"
 import Register from "./Components/Register.jsx"
+import Rec from "./Components/Rec.jsx"
 function App() {
  
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/auth/register" element={<Register/>} />
       <Route path="/auth/login" element={<Login/>} />
       <Route path='/Save' element={<SavedRec />} />
+      <Route path='/test' element={<Rec />} />
       
     </Routes>
     </BrowserRouter>
