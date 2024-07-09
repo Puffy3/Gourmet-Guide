@@ -10,7 +10,7 @@ function Home() {
       try {
         const response = await axios.get("http://localhost:5000/recipes")
         setRecipes(response.data)
-        console.log(response.data[0].imageUrl)
+       
       } catch (error) {
         console.error(error)
       }
