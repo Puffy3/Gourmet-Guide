@@ -9,6 +9,7 @@ import Navbar from "./Components/Navbar.jsx"
 import Login from "./Components/Login.jsx"
 import Register from "./Components/Register.jsx"
 import Rec from "./Components/Rec.jsx"
+import Search from "./Pages/Search.jsx"
 function App() {
  
 
@@ -23,7 +24,7 @@ function App() {
       <Route path="/auth/login" element={<Login/>} />
       <Route path='/Save' element={<SavedRec />} />
       <Route path='/test' element={<Rec />} />
-      
+      <Route path='/search' element={<Search />} />
     </Routes>
     </BrowserRouter>
     </>

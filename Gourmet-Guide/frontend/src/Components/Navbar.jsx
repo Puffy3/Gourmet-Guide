@@ -26,6 +26,13 @@ function Navbar() {
                     Home
                   </li>
                 </Link>
+                <li className="p-2">|</li>
+                <Link to="/search">
+                  {" "}
+                  <li className="hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg ">
+                    Search
+                  </li>
+                </Link>
                 {/* <li className="p-2">|</li>
                 <Link to="/create">
                   <li className=" hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg">
@@ -79,6 +86,13 @@ function Navbar() {
                 <Link to="/save">
                   <li className="hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg">
                     Saved
+                  </li>
+                </Link>
+                <li className="p-2">|</li>
+                <Link to="/search">
+                  {" "}
+                  <li className="hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg ">
+                    Search
                   </li>
                 </Link>
               </ul>
