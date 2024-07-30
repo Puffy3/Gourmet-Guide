@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useCookies } from "react-cookie";
 import UseGetUserID from '../hooks/UseGetUserID.jsx';
 import axios from 'axios';
 function Rec(props) {
   const [savedRecipe,setSavedRecipe]=useState([])
   const userID=UseGetUserID()
-
+  const [cookies, setCookie] = useCookies(["access_token"]);
     const saveRecipe=async(recipeID)=>{
         try {
           const response = await axios.put("http://localhost:5000/recipes",{recipeID,userID})
@@ -46,7 +47,7 @@ function Rec(props) {
         <p className='text-orange-500 mt-4'>Cooking time</p>
         <p className="mt-2 text-gray-300">{props.time} minutes</p>
       </div>
-      <button className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg text-orange-500 h-10' onClick={()=>saveRecipe(props.ied)}  disabled={isRecipeSaved(props.ied)}> {isRecipeSaved(props.ied) ? "Saved" : "Save"}</button>
+      {!cookies.access_token ?<div></div>:<button className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg text-orange-500 h-10' onClick={()=>saveRecipe(props.ied)}  disabled={isRecipeSaved(props.ied)}> {isRecipeSaved(props.ied) ? "Saved" : "Save"}</button>}
     </div>
   );
 }

@@ -45,7 +45,7 @@ import { useEffect } from "react";
         <p className='text-orange-500 mt-4'>Ingredients</p>
         <div className="mt-2 flex gap-3 ">
           {recipe.ingredients.map((ingredient, index) => (
-            <h3 key={index} className="text-lg text-white">{recipe.ingredients}</h3>
+            <h3 key={index} className="text-lg text-white">{ingredient}</h3>
           ))}
         </div>
         <p className='text-orange-500 mt-4'>Instruction</p>

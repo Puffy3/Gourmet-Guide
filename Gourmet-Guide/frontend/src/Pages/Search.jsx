@@ -75,7 +75,7 @@ const Search = () => {
               <div className="mt-2 flex gap-3 ">
                 {recipe.ingredients.map((ingredient, index) => (
                   <h3 key={index} className="text-lg text-white">
-                    {recipe.ingredients}
+                    {ingredient}
                   </h3>
                 ))}
               </div>
