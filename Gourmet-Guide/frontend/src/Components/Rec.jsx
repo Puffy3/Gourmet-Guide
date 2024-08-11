@@ -29,6 +29,12 @@ function Rec(props) {
         fetchSavedRecipes();
       },[])
       const isRecipeSaved = (id) => savedRecipe.includes(id);
+      const nonveg = [
+        'chicken', 'fish', 'mutton', 'meat', 'lamb', 'beef', 'pork', 'bacon',
+        'turkey', 'duck', 'goat', 'shrimp', 'prawn', 'crab', 'lobster',
+        'venison', 'quail', 'rabbit', 'ham', 'sausage'
+    ];
+    
   return (
     <div className="bg-black shadow-md rounded-lg overflow-hidden flex max-w-full p-5 my-10 mx-5">
       <div className='flex items-center'>
@@ -41,11 +47,16 @@ function Rec(props) {
           {props.ing.map((ingredient, index) => (
             <h3 key={index} className="text-lg text-white">{ingredient}</h3>
           ))}
+          {/* let i=recipe.ingredients.some(item => nonveg.includes(item)); */}
         </div>
         <p className='text-orange-500 mt-4'>Instruction</p>
         <p className="mt-4 text-gray-300">{props.instructions}</p>
         <p className='text-orange-500 mt-4'>Cooking time</p>
         <p className="mt-2 text-gray-300">{props.time} minutes</p>
+        {props.ing.some(item => 
+    nonveg.map(nonvegItem => nonvegItem.toLowerCase()).includes(item.toLowerCase())
+)
+?<p className="mt-2 text-xl text-gray-300">🔴Non-veg</p>:<p className="mt-2  text-xl text-gray-300">🟢veg</p>}
       </div>
       {!cookies.access_token ?<div></div>:<button className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg text-orange-500 h-10' onClick={()=>saveRecipe(props.ied)}  disabled={isRecipeSaved(props.ied)}> {isRecipeSaved(props.ied) ? "Saved" : "Save"}</button>}
     </div>

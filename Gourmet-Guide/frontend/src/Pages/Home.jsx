@@ -23,6 +23,7 @@ function Home() {
     <div>
       {recipes.length > 0 ? (
         recipes.map((recipe) => (
+          
           <Rec 
           key={recipe._id}
           func={setRecipes}
@@ -32,6 +33,8 @@ function Home() {
             ing={recipe.ingredients} 
             instructions={recipe.instructions} 
             time={recipe.cookingTime} 
+            
+          
           />
         ))
       ) : (
