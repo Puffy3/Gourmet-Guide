@@ -14,7 +14,7 @@
   - Search for specific recipes by name.
   - Create new recipes.
   - Save favorite recipes to their saved list.
-- **Search Functionality**: Easily search recipes by keywords or ingredients.
+- **Search Functionality**: Easily search recipes by name.
 
 ## Tech Stack
 - **Frontend**: React, React Router, Axios
