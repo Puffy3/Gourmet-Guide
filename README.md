@@ -1,6 +1,6 @@
 
 
-```md
+
 # Gourmet Guide
 
 **Gourmet Guide** is a recipe management application built using the MERN stack (MongoDB, Express, React, Node.js). The app allows users to register, log in, browse through recipes, search for specific recipes, create their own recipes, and save their favorites.
