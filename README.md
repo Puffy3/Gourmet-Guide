@@ -30,7 +30,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Puffy3/Gourmet-Guide
+   git clone https://github.com/Puffy3/Gourmet-Guide.git
    ```
 
 2. Navigate to the project directory:
