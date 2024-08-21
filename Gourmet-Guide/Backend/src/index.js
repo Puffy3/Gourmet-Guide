@@ -16,7 +16,7 @@ app.use(express.json())
  mongoose.connect(url).then(()=>{
     console.log(`db connected`);
  })
- const port =5000
+ const port =process.env.PORT
 //  app.get('/',(req,res)=>{
 //      res.send('hello world')
 //  })
