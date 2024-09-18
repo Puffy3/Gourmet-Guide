@@ -2,25 +2,26 @@ import axios from "axios";
 import { useState } from "react";
 import UseGetUserID from "../hooks/UseGetUserID";
 import { useEffect } from "react";
+import { useCookies } from "react-cookie";
  const SavedRec = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const userID = UseGetUserID();
+if(cookies.access_token){useEffect(() => {
+  const fetchSavedRecipes = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/recipes/savedRecipes/${userID}`
+      );
+     
+      setSavedRecipes(response.data.savedRecipes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  useEffect(() => {
-    const fetchSavedRecipes = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/recipes/savedRecipes/${userID}`
-        );
-        
-        setSavedRecipes(response.data.savedRecipes);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchSavedRecipes();
-  }, []);
+  fetchSavedRecipes();
+}, []);}
+  
   return (
     <div>
       <h1 className="text-3xl text-white m-5 font-bold">Saved Recipes</h1>

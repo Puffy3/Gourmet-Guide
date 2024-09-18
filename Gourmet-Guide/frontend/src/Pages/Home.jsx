@@ -8,7 +8,8 @@ function Home() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/recipes")
+        const u="http://localhost:5000/recipes"
+        const response = await axios.get(u)
         setRecipes(response.data)
        
       } catch (error) {

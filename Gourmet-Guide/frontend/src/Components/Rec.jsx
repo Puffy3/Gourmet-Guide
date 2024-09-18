@@ -15,7 +15,7 @@ function Rec(props) {
           console.error(error)
         }
       }
-      useEffect(()=>{
+      if(cookies.access_token){useEffect(()=>{
         const fetchSavedRecipes = async () => {
           try {
             const response = await axios.get(
@@ -27,7 +27,8 @@ function Rec(props) {
           }
         };
         fetchSavedRecipes();
-      },[])
+      },[])}
+      
       const isRecipeSaved = (id) => savedRecipe.includes(id);
       const nonveg = [
         'chicken', 'fish', 'mutton', 'meat', 'lamb', 'beef', 'pork', 'bacon',
