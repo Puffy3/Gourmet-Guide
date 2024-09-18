@@ -26,10 +26,10 @@ const Search = () => {
      seti(false)
     }
   };
-  React.useEffect(() => {
-    console.log(results);
-    console.log(i)
-  }, [results]);
+  // React.useEffect(() => {
+  //   console.log(results);
+  //   console.log(i)
+  // }, [results]);
   return (
     <div>
       <div className='flex justify-center my-5 bg-black p-5 w-50 rounded-md'>

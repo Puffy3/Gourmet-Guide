@@ -9,7 +9,7 @@ function Rec(props) {
     const saveRecipe=async(recipeID)=>{
         try {
           const response = await axios.put("http://localhost:5000/recipes",{recipeID,userID})
-          console.log(response)
+         
           setSavedRecipe(response.data.savedRecipes);
         } catch (error) {
           console.error(error)
@@ -54,8 +54,9 @@ function Rec(props) {
         <p className='text-orange-500 mt-4'>Cooking time</p>
         <p className="mt-2 text-gray-300">{props.time} minutes</p>
         {props.ing.some(item => 
-    nonveg.map(nonvegItem => nonvegItem.toLowerCase()).includes(item.toLowerCase())
+    nonveg.some(nonvegItem => item.toLowerCase().includes(nonvegItem.toLowerCase()))
 )
+
 ?<p className="mt-2 text-xl text-gray-300">🔴Non-veg</p>:<p className="mt-2  text-xl text-gray-300">🟢veg</p>}
       </div>
       {!cookies.access_token ?<div></div>:<button className='hover:cursor-pointer hover:bg-orange-500 hover:text-black p-2 rounded-lg text-orange-500 h-10' onClick={()=>saveRecipe(props.ied)}  disabled={isRecipeSaved(props.ied)}> {isRecipeSaved(props.ied) ? "Saved" : "Save"}</button>}

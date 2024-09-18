@@ -12,7 +12,7 @@ import { useEffect } from "react";
         const response = await axios.get(
           `http://localhost:5000/recipes/savedRecipes/${userID}`
         );
-        console.log(response)
+        
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
         console.log(err);

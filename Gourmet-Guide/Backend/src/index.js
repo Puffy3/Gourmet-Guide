@@ -22,9 +22,7 @@ app.use(express.json())
 //  })
 const db = mongoose.connection;
 
-db.on('connected', () => {
-  console.log('Mongoose connected to DB');
-});
+
 
 db.on('error', (err) => {
   console.error('Mongoose connection error:', err);

@@ -53,12 +53,23 @@ router.get("/savedRecipes/search/:query", async (req, res) => {
   }
 });
 router.get("/savedRecipes/ids/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  // Validate if userId is a valid ObjectId
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(400).json({ error: "Invalid user ID format" });
+  }
+
   try {
-    const user = await UserModel.findById(req.params.userId);
-    res.status(201).json({ savedRecipes: user?.savedRecipes });
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json({ savedRecipes: user.savedRecipes });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 router.get("savedRecipes",async(req,res)=>
@@ -80,7 +91,7 @@ router.get("/savedRecipes/:userId", async (req, res) => {
         _id: { $in: user.savedRecipes },
       });
   
-      console.log(savedRecipes);
+     
       res.status(201).json({ savedRecipes });
     } catch (err) {
       console.log(err);
